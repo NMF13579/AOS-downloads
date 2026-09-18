@@ -16,7 +16,7 @@ Python включён в пакет; Python/Git/Xcode/CLT у пользоват�
   /usr/bin/curl -q --fail --silent --show-error --proto '=https' --max-time 60 \
     https://raw.githubusercontent.com/NMF13579/AOS-downloads/main/bootstrap.sh -o "$entry"
   actual=$(/usr/bin/shasum -a 256 "$entry")
-  [ "${actual%% *}" = "72c54c6761a2bca40db42bba5ce0e60bb89536807351fac71267590238a2ffbd" ] || { echo 'AOS: installer checksum mismatch' >&2; exit 3; }
+  [ "${actual%% *}" = "a2f037d9654787f9049ecc8c9c7f901d21f9b5a9a33d11c26e97460ed30a96d4" ] || { echo 'AOS: installer checksum mismatch' >&2; exit 3; }
   /bin/sh "$entry" install "$PWD" test public-test
 )
 ```
@@ -27,7 +27,7 @@ Python включён в пакет; Python/Git/Xcode/CLT у пользоват�
 
 **Тестовый пакет не имеет подписи Developer ID и Apple notarization.**
 Доверие — к этому GitHub-источнику по HTTPS. SHA-256 и размер сверяются с GitHub
-API до запуска, затем проверяется состав пакета. Это не независимая подпись и
+каталогом версий до запуска, затем проверяется состав пакета. Это не независимая подпись и
 не проверка Apple на вредоносный код. Установщик не отключает Gatekeeper и не
 удаляет quarantine. Если macOS блокирует компонент, смотрите
 [инструкцию Apple](https://support.apple.com/en-gb/102445); не отключайте защиту

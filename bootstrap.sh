@@ -45,6 +45,9 @@ curl_api() {
     while :; do
         case "$curl_url" in *[[:space:]]*|*\\*|*'#'*) fail 'invalid download URL';; esac
         case "$curl_url" in
+            https://raw.githubusercontent.com/NMF13579/AOS-downloads/main/channels/test.json)
+                [ "$mode" = public-test ] && [ "$curl_hops" -eq 0 ] || fail 'download origin refused'
+                curl_auth=0;;
             https://api.github.com/repos/"$repository"/*)
                 if [ "$curl_hops" -gt 0 ]; then
                     case "$curl_url" in "$api/releases/assets/"*) ;; *) fail 'download origin refused';; esac
@@ -92,7 +95,12 @@ api=https://api.github.com/repos/$repository
 page=1
 best=''
 while [ "$page" -le 10 ]; do
+    if [ "$mode" = public-test ]; then
+        curl_api "https://raw.githubusercontent.com/$repository/main/channels/test.json" "$scratch/channel.json" application/vnd.github+json 2097152 || fail 'cannot read published public test channel'
+        { printf '['; /bin/cat "$scratch/channel.json"; printf ']'; } > "$scratch/releases.json"
+    else
     curl_api "$api/releases?per_page=100&page=$page" "$scratch/releases.json" application/vnd.github+json 2097152 || fail 'cannot read published channel; check network and repository access'
+    fi
     { printf '{"releases":'; /bin/cat "$scratch/releases.json"; printf '}'; } > "$scratch/page.json"
     count=$(/usr/bin/plutil -extract releases raw -expect array -o - "$scratch/page.json") || fail 'release list invalid'
     [ "$count" -le 100 ] || fail 'release list too large'
@@ -153,7 +161,9 @@ case "$asset_size" in *[!0-9]*|'') fail 'invalid asset size';; esac
 [ "${#asset_size}" -le 10 ] && [ "$asset_size" -gt 0 ] && [ "$asset_size" -le 1073741824 ] || fail 'invalid asset size'
 [ "${#asset_id}" -le 18 ] && [ "$asset_id" -gt 0 ] || fail 'invalid asset identity'
 image="$scratch/aos-macos-arm64.dmg"
-curl_api "$api/releases/assets/$asset_id" "$image" application/octet-stream 1073741824 || fail 'package download failed'
+download_url="$api/releases/assets/$asset_id"
+[ "$mode" != public-test ] || download_url="$asset_url"
+curl_api "$download_url" "$image" application/octet-stream 1073741824 || fail 'package download failed'
 [ "$(/usr/bin/stat -f %z "$image")" -eq "$asset_size" ] || fail 'package size mismatch'
 actual=$(/usr/bin/shasum -a 256 "$image")
 [ "${actual%% *}" = "$digest" ] || fail 'package checksum mismatch'

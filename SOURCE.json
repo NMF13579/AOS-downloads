@@ -3,13 +3,13 @@
   "source_base_commit": "b81bfe52942393063e8496ee06b2c398fe027af2",
   "source_commit": null,
   "source_has_uncommitted_changes": true,
-  "source_digest": "ccf0de0771bd5e9de60ae50a9b674b947c5ca52adbbee68414090e82fbfb7d54",
+  "source_digest": "1f279f5cea5429083d5857246711049b26bcfb324cc2ac70e7adc9508ad796f0",
   "distribution": "PUBLIC_TEST_UNNOTARIZED",
   "channel": "test",
-  "bootstrap_sha256": "72c54c6761a2bca40db42bba5ce0e60bb89536807351fac71267590238a2ffbd",
+  "bootstrap_sha256": "a2f037d9654787f9049ecc8c9c7f901d21f9b5a9a33d11c26e97460ed30a96d4",
   "source_binding": "This publication commit records the exact working product manifest. bundle.release_commit binds the image to this public record; it is not a private source commit.",
   "local_checks": {
-    "installation_tests": 121,
+    "installation_tests": 122,
     "ruff": "PASS"
   },
   "limitations": [
