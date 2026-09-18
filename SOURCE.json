@@ -1,0 +1,20 @@
+{
+  "source_repository": "NMF13579/AOS-3",
+  "source_base_commit": "b81bfe52942393063e8496ee06b2c398fe027af2",
+  "source_commit": null,
+  "source_has_uncommitted_changes": true,
+  "source_digest": "ccf0de0771bd5e9de60ae50a9b674b947c5ca52adbbee68414090e82fbfb7d54",
+  "distribution": "PUBLIC_TEST_UNNOTARIZED",
+  "channel": "test",
+  "bootstrap_sha256": "72c54c6761a2bca40db42bba5ce0e60bb89536807351fac71267590238a2ffbd",
+  "source_binding": "This publication commit records the exact working product manifest. bundle.release_commit binds the image to this public record; it is not a private source commit.",
+  "local_checks": {
+    "installation_tests": 121,
+    "ruff": "PASS"
+  },
+  "limitations": [
+    "No Apple notarization",
+    "Not a clean machine",
+    "Native user selection NOT_RUN"
+  ]
+}
