@@ -14,7 +14,7 @@ Python включён в пакет; Python/Git/Xcode/CLT у пользоват�
   set -eu
   entry=$(/usr/bin/mktemp -t aos-public-entry)
   /usr/bin/curl -q --fail --silent --show-error --proto '=https' --max-time 60 \
-    https://raw.githubusercontent.com/NMF13579/AOS-downloads/main/bootstrap.sh -o "$entry"
+    https://raw.githubusercontent.com/NMF13579/AOS-downloads/66b0a18428c554fc3b0390889f642f93e2eb3c2b/bootstrap.sh -o "$entry"
   actual=$(/usr/bin/shasum -a 256 "$entry")
   [ "${actual%% *}" = "a2f037d9654787f9049ecc8c9c7f901d21f9b5a9a33d11c26e97460ed30a96d4" ] || { echo 'AOS: installer checksum mismatch' >&2; exit 3; }
   /bin/sh "$entry" install "$PWD" test public-test

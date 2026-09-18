@@ -1,0 +1,23 @@
+{
+  "assets": [
+    {
+      "browser_download_url": "https://github.com/NMF13579/AOS-downloads/releases/download/aos-66b0a18428c554fc3b0390889f642f93e2eb3c2b/aos-macos-arm64.dmg",
+      "digest": "sha256:1104671ea920029793359cb4bf0ad01b512c37d512fc8f6aaab1eb8628186bd7",
+      "id": 572176027,
+      "name": "aos-macos-arm64.dmg",
+      "size": 61714702
+    },
+    {
+      "browser_download_url": "https://github.com/NMF13579/AOS-downloads/releases/download/aos-66b0a18428c554fc3b0390889f642f93e2eb3c2b/SHA256SUMS",
+      "digest": "sha256:7035250bcc9a8f74261823d693fa1cb18205d796745bb106fae4c00685300414",
+      "id": 572176029,
+      "name": "SHA256SUMS",
+      "size": 86
+    }
+  ],
+  "draft": false,
+  "id": 391317679,
+  "prerelease": true,
+  "published_at": "2026-09-18T08:26:56Z",
+  "tag_name": "aos-66b0a18428c554fc3b0390889f642f93e2eb3c2b"
+}
